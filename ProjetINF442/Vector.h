@@ -16,8 +16,9 @@ private :
 	double z;
 
 public :
+	Vector();//Constructeur par défaut
 	Vector (double x, double y, double z); //Constructeur
- //	~Vector(); //Destructeur : en a-t-on besoin ?
+ 	~Vector(); //Destructeur
 
 	Vector add(const Vector &vec); //Addition avec un vecteur
 	double multiply(const Vector &vec); //Produit scalaire (inner product)
