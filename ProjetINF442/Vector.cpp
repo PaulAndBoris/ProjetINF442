@@ -42,6 +42,13 @@ double Vector::multiply(const Vector& vec) {
 	return this->x * vec.x + this->y * vec.y + this->z * vec.z;
 }
 
+Vector Vector::cross_product(const Vector&vec){
+	double x = this->y*vec.z - this->z*vec.y;
+	double y = this->z*vec.x - this->x*vec.z;
+	double z = this->x*vec.y - this->y*vec.x;
+
+	return Vector(x,y,z);
+}
 void Vector::print() {
 	std::cout << "x : " << this->x << " y : " << this->y << "z : " << this->z
 			<< std::endl;
@@ -59,6 +66,10 @@ double Vector::operator*(const Vector &vec) {
 
 Vector Vector::operator*(const double &scalar) {
 	return this->multiply(scalar);
+}
+
+Vector Vector::operator^(const Vector& vec){
+	return this->cross_product(vec);
 }
 
 ostream& operator<<(ostream& os, const Vector& vec) {

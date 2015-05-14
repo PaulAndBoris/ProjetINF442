@@ -26,12 +26,5 @@ Sphere::Sphere() {
 }
 ;
 
-/*Sphere::~Sphere() {
-	delete[] &this->centre;
-	delete[] &this->radius = 0;
-	delete[] &this->R = 0;
-	delete[] &this->G = 0;
-	delete[] this->B = 0;
 
-}*/
 

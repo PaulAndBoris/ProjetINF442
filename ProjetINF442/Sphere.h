@@ -26,7 +26,7 @@ public :
 
 	Sphere();//Constructeur par défaut, nécessaire pour pouvoir initialiser un set
 	Sphere(Point centre, double radius, int R, int G, int B);//Constructeur
-	~Sphere();//Destructeur
+	//~Sphere();//Destructeur : inutile ?
 
 };
 
