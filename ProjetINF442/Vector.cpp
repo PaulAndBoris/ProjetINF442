@@ -4,6 +4,7 @@
  *  Created on: 8 mai 2015
  *      Author: Boris
  */
+#include <cmath>
 #include <iostream>
 #include "Vector.h"
 
@@ -23,6 +24,12 @@ Vector::Vector(){
 	this->z = 0;
 };
 
+Vector::Vector(Point a, Point b){
+	this->x = b.getX()-a.getX();
+	this->y = b.getY()-a.getY();
+	this->z = b.getZ()-a.getZ();
+};
+
 Vector::~Vector() {
 	delete[] &this->x;
 	delete[] &this->y;
@@ -40,6 +47,10 @@ Vector Vector::multiply(const double& scalar) {
 
 double Vector::multiply(const Vector& vec) {
 	return this->x * vec.x + this->y * vec.y + this->z * vec.z;
+}
+
+double Vector::norm(){
+	return sqrt(this->multiply(*this));
 }
 
 Vector Vector::cross_product(const Vector&vec){

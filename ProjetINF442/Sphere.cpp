@@ -26,5 +26,12 @@ Sphere::Sphere() {
 }
 ;
 
+Point Sphere::getCentre() const{
+	return this->centre;
+}
+
+double Sphere::getRadius() const{
+	return this->radius;
+}
 
 

@@ -19,6 +19,8 @@ private :
 public :
 
 	Ray(Point point, Vector direction);//Constructeur
+	Vector getDirection() const;//Accès à la direction
+	Point getPoint() const;//Accès au point
 
 };
 

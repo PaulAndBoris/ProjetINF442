@@ -17,11 +17,24 @@ Point::Point(double x, double y, double z) {
 ;
 
 Point::Point() {
-	this->x = 0;
-	this->y = 0;
-	this->z = 0;
+	this->x = 0.;
+	this->y = 0.;
+	this->z = 0.;
 }
 ;
+
+double Point::getX(){
+	return (this->x);
+}
+
+double Point::getY(){
+	return (this->y);
+}
+
+double Point::getZ(){
+	return (this->z);
+}
+
 
 ostream& operator<<(ostream& os, const Point& p) {
 	os << "(" << p.x << ", " << p.y << ", " << p.z << ")" << endl;
