@@ -40,10 +40,12 @@ bool intersection(const Ray& ray, const Sphere& sphere,
 		double t2 = (-b - sqrt(delta)) / (2 * a);
 		double t_res;
 
-		if ((t1 > 0 && t1 < t2) || (t1 > 0 && t2 <= 0))
+		if (t1 >= 0 && (t1 <= t2 || t2 < 0))
 			t_res = t1;
-		else
+		else if (t2 >= 0)
 			t_res = t2;
+        else
+            return false;
 
 		Vector vec = direction * t_res;
 		intersection_point = Point(vec.getX() + origine.getX(),
