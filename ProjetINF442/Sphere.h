@@ -26,9 +26,11 @@ public :
 
 	Sphere();//Constructeur par défaut, nécessaire pour pouvoir initialiser un set
 	Sphere(Point centre, double radius, int R, int G, int B);//Constructeur
+    
 	Point getCentre() const;//Accès au centre
 	double getRadius() const;//Accès au rayon
-
+    
+    bool operator<(const Sphere &sphere) const;
 };
 
 

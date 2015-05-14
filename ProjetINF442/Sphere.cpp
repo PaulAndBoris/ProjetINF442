@@ -34,4 +34,27 @@ double Sphere::getRadius() const{
 	return this->radius;
 }
 
-
+bool Sphere::operator<(const Sphere &sphere) const {
+    if (centre < sphere.centre)
+        return true;
+    if (sphere.centre < centre)
+        return false;
+    if (radius < sphere.radius)
+        return true;
+    if (radius > sphere.radius)
+        return false;
+    if (R < sphere.R)
+        return true;
+    if (R > sphere.R)
+        return false;
+    if (G < sphere.G)
+        return true;
+    if (G > sphere.G)
+        return false;
+    if (B < sphere.B)
+        return true;
+    if (B > sphere.B)
+        return false;
+    
+    return false;
+}

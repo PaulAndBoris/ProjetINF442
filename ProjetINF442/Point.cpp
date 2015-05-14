@@ -23,15 +23,15 @@ Point::Point() {
 }
 ;
 
-double Point::getX(){
+double Point::getX() const{
 	return (this->x);
 }
 
-double Point::getY(){
+double Point::getY() const{
 	return (this->y);
 }
 
-double Point::getZ(){
+double Point::getZ() const{
 	return (this->z);
 }
 
@@ -41,3 +41,19 @@ ostream& operator<<(ostream& os, const Point& p) {
 	return os;
 }
 
+bool Point::operator<(const Point &point) const {
+    if (x < point.x)
+        return true;
+    if (x > point.x)
+        return false;
+    if (y < point.y)
+        return true;
+    if (y > point.y)
+        return false;
+    if (z < point.z)
+        return true;
+    if (z > point.z)
+        return false;
+    
+    return false;
+}

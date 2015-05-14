@@ -31,35 +31,35 @@ Vector::Vector(Point a, Point b){
 };
 
 
-double Vector::getX(){
+double Vector::getX() const{
 	return (this->x);
 }
 
-double Vector::getY(){
+double Vector::getY() const{
 	return (this->y);
 }
 
-double Vector::getZ(){
+double Vector::getZ() const{
 	return (this->z);
 }
 
-Vector Vector::add(const Vector &vec) {
+Vector Vector::add(const Vector &vec) const {
 	return Vector(this->x + vec.x, this->y + vec.y, this->z + vec.z);
 }
 
-Vector Vector::multiply(const double& scalar) {
+Vector Vector::multiply(const double& scalar) const {
 	return Vector(scalar * this->x, scalar * this->y, scalar * this->z);
 }
 
-double Vector::multiply(const Vector& vec) {
+double Vector::multiply(const Vector& vec) const {
 	return this->x * vec.x + this->y * vec.y + this->z * vec.z;
 }
 
-double Vector::norm(){
+double Vector::norm() const {
 	return sqrt(this->multiply(*this));
 }
 
-Vector Vector::cross_product(const Vector&vec){
+Vector Vector::cross_product(const Vector&vec) const {
 	double x = this->y*vec.z - this->z*vec.y;
 	double y = this->z*vec.x - this->x*vec.z;
 	double z = this->x*vec.y - this->y*vec.x;
@@ -72,20 +72,20 @@ void Vector::print() {
 }
 
 //Surcharge de l'opérateur +
-Vector Vector::operator+(const Vector &vec) {
+Vector Vector::operator+(const Vector &vec) const {
 	return this->add(vec);
 }
 
 //Surcharges de l'opérateur *
-double Vector::operator*(const Vector &vec) {
+double Vector::operator*(const Vector &vec) const {
 	return this->multiply(vec);
 }
 
-Vector Vector::operator*(const double &scalar) {
+Vector Vector::operator*(const double &scalar) const {
 	return this->multiply(scalar);
 }
 
-Vector Vector::operator^(const Vector& vec){
+Vector Vector::operator^(const Vector& vec) const {
 	return this->cross_product(vec);
 }
 

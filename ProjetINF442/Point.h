@@ -23,10 +23,11 @@ public:
 	Point(double x, double y, double z); //Constructeur
 	friend ostream& operator<<(ostream& os, const Point& p);
 
+    bool operator<(const Point &point) const;
 	//Accesseurs :
-	double getX();
-	double getY();
-	double getZ();
+	double getX() const;
+	double getY() const;
+	double getZ() const;
 
 };
 #endif /* POINT_H_ */

@@ -21,7 +21,6 @@ public :
 
 	Scene();//Constructeur par défaut
 	Scene(std::set<Sphere> spheres);//Constructeur
-	~Scene();//Destructeur
 
 };
 

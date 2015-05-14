@@ -17,8 +17,3 @@ Scene::Scene(set<Sphere> spheres) {
 	this->spheres = spheres;
 }
 ;
-
-Scene::~Scene() {
-	delete[] &this->spheres;
-}
-;

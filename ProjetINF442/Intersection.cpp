@@ -23,7 +23,7 @@ bool intersection(const Ray& ray, const Sphere& sphere,
 
 	Vector direction = ray.getDirection();
 	Vector fromCentre = Vector(sphere.getCentre(), ray.getPoint());
-	Point centre = sphere.getCentre();
+//	Point centre = sphere.getCentre(); Non utilisé
 	Point origine = ray.getPoint();
 
 	//Coefficients de l'equation a*t^2+b*t+c=0

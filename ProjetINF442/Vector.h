@@ -24,22 +24,22 @@ public:
 	Vector (Point a, Point b);//Construit le vecteur ab
 
 	//Accesseurs
-	double getX();
-	double getY();
-	double getZ();
+	double getX() const;
+	double getY() const;
+	double getZ() const;
 
-	Vector add(const Vector &vec); //Addition avec un vecteur
-	double multiply(const Vector &vec); //Produit scalaire (inner product)
-	Vector multiply(const double &scalar); //Multiplication par un scalaire (outer product)
-	double norm();//Calcule la norme du vecteur
-	Vector cross_product (const Vector& vec ); //Produit vectoriel
+	Vector add(const Vector &vec) const; //Addition avec un vecteur
+	double multiply(const Vector &vec) const; //Produit scalaire (inner product)
+	Vector multiply(const double &scalar) const; //Multiplication par un scalaire (outer product)
+	double norm() const;//Calcule la norme du vecteur
+	Vector cross_product (const Vector& vec ) const; //Produit vectoriel
 
 	void print(); //Affiche le vecteur
 
-	Vector operator+(const Vector &vec);
-	double operator*(const Vector &vec);
-	Vector operator*(const double &scalar);//NB : on doit écrire vecteur*scalaire et pas l'inverse
-	Vector operator^(const Vector &vec); //Operateur produit vectoriel
+	Vector operator+(const Vector &vec) const;
+	double operator*(const Vector &vec) const;
+	Vector operator*(const double &scalar) const;//NB : on doit écrire vecteur*scalaire et pas l'inverse
+	Vector operator^(const Vector &vec) const; //Operateur produit vectoriel
 
 	friend ostream& operator<<(ostream& os, const Vector& vec);
 };
