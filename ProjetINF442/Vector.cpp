@@ -30,12 +30,18 @@ Vector::Vector(Point a, Point b){
 	this->z = b.getZ()-a.getZ();
 };
 
-Vector::~Vector() {
-	delete[] &this->x;
-	delete[] &this->y;
-	delete[] &this->z;
+
+double Vector::getX(){
+	return (this->x);
 }
-;
+
+double Vector::getY(){
+	return (this->y);
+}
+
+double Vector::getZ(){
+	return (this->z);
+}
 
 Vector Vector::add(const Vector &vec) {
 	return Vector(this->x + vec.x, this->y + vec.y, this->z + vec.z);
