@@ -14,5 +14,4 @@ Camera::Camera(Vector eye, Vector target, Vector up, double width,
 	this->width = width;
 	this->height = height;
 }
-;
 

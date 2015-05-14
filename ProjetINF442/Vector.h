@@ -6,7 +6,6 @@
  */
 #include <iostream>
 #include "Point.h"
-using namespace std;
 
 #ifndef VECTOR_H_
 #define VECTOR_H_
@@ -41,7 +40,7 @@ public:
 	Vector operator*(const double &scalar) const;//NB : on doit écrire vecteur*scalaire et pas l'inverse
 	Vector operator^(const Vector &vec) const; //Operateur produit vectoriel
 
-	friend ostream& operator<<(ostream& os, const Vector& vec);
+    friend std::ostream& operator<<(std::ostream& os, const Vector& vec);
 };
 
 #endif /* VECTOR_H_ */

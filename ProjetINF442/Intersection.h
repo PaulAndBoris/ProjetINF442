@@ -16,7 +16,6 @@ bool isIntersection(const Ray& ray, const Sphere& sphere);
 
 //Renvoie un boolean indiquant s'il y a intersection entre un rayon et une sphere
 //Le cas échéant stocke le point d'intersection dans la référence intersection_point
-
 bool intersection(const Ray& ray, const Sphere& sphere, Point& intersection_point);
 
 #endif /* INTERSECTION_H_ */

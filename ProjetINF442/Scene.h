@@ -7,7 +7,6 @@
 #include<set>
 #include "Sphere.h"
 
-
 #ifndef SCENE_H_
 #define SCENE_H_
 

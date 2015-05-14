@@ -5,7 +5,6 @@
  *      Author: Boris
  */
 #include<iostream>
-using namespace std;
 
 #ifndef POINT_H_
 #define POINT_H_
@@ -21,7 +20,7 @@ private:
 public:
 	Point();//Constructeur par défaut
 	Point(double x, double y, double z); //Constructeur
-	friend ostream& operator<<(ostream& os, const Point& p);
+    friend std::ostream& operator<<(std::ostream& os, const Point& p);
 
     bool operator<(const Point &point) const;
 	//Accesseurs :
