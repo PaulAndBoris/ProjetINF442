@@ -12,10 +12,10 @@ using namespace std;
 int main() {
 
     int cols = 640, rows = 480;
-    int R = 200, G = 200, B = 250;
+    int R = 100, G = 40, B = 150;
     double Ks = 0.3, Kd = 0.7, Ka = 0.3, alpha = 20;
     
-    Point eye(-0.5, 0, 0), sphereCenter(2, 0, 0), lightCenter(0.5, 1, 0);
+    Point eye(-0.5, 0, 0), sphereCenter(2, 0, 0), lightCenter(0.5, 1, -0.3);
     Light light(lightCenter, 255, 255, 255, 255, 255, 255);
     Sphere sphere(sphereCenter, 0.9, R, G, B, Ks, Kd, Ka, alpha);
     Camera cam(eye, Point(), Vector(0,0,1) , 4.0/3, 1, cols, rows);

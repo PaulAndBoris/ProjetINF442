@@ -11,7 +11,7 @@ Light::Light(Point source) :
 
 source(source),
 color(Color::whiteColor()),
-ambientColor(Color::blackColor())
+ambientColor(Color::whiteColor())
 {}
 
 

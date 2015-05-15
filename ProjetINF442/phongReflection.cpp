@@ -28,9 +28,9 @@ Color phongReflectionColor(const Point& P, const Color &pointColor, const Ray &r
     Kd_G = (pointColor.getG() * Kd) / 255.0,
     Kd_B = (pointColor.getB() * Kd) / 255.0,
     
-    Ks_R = (pointColor.getR() * Ks) / 255.0,
-    Ks_G = (pointColor.getG() * Ks) / 255.0,
-    Ks_B = (pointColor.getB() * Ks) / 255.0;
+    Ks_R = Ks,//(pointColor.getR() * Ks) / 255.0,
+    Ks_G = Ks,//(pointColor.getG() * Ks) / 255.0,
+    Ks_B = Ks;//(pointColor.getB() * Ks) / 255.0;
     
     double L_N = L * N, R_V_alpha = pow(R * V, alpha);
     
