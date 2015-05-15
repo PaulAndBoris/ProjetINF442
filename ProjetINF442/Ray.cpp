@@ -6,10 +6,7 @@
  */
 #include "Ray.h"
 
-Ray::Ray(Point point, Vector direction){
-	this->point = point;
-	this->direction = direction;
-};
+Ray::Ray(Point point, Vector direction) : point(point), direction(direction) {}
 
 Vector Ray::getDirection() const{
 	return this->direction;

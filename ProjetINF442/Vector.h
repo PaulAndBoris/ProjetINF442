@@ -4,11 +4,12 @@
  *  Created on: 8 mai 2015
  *      Author: Boris
  */
-#include <iostream>
-#include "Point.h"
-
 #ifndef VECTOR_H_
 #define VECTOR_H_
+
+#include <iostream>
+
+class Point;
 
 class Vector {
 
@@ -27,15 +28,21 @@ public:
 	double getY() const;
 	double getZ() const;
 
-	Vector add(const Vector &vec) const; //Addition avec un vecteur
+    Vector add(const Vector &vec) const; //Addition avec un vecteur
+    Vector substract(const Vector &vec) const; //Soustraction avec un vecteur
 	double multiply(const Vector &vec) const; //Produit scalaire (inner product)
 	Vector multiply(const double &scalar) const; //Multiplication par un scalaire (outer product)
 	double norm() const;//Calcule la norme du vecteur
 	Vector cross_product (const Vector& vec ) const; //Produit vectoriel
+    Vector normalize() const;
+    
+    // normal should be a unit vector!
+    Vector reflectedBy(const Vector &normal) const;
 
 	void print(); //Affiche le vecteur
 
 	Vector operator+(const Vector &vec) const;
+    Vector operator-(const Vector &vec) const;
 	double operator*(const Vector &vec) const;
 	Vector operator*(const double &scalar) const;//NB : on doit écrire vecteur*scalaire et pas l'inverse
 	Vector operator^(const Vector &vec) const; //Operateur produit vectoriel

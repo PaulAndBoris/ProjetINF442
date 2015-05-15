@@ -4,24 +4,12 @@
  *  Created on: 12 mai 2015
  *      Author: Boris
  */
-#include <iostream>
 #include "Point.h"
+#include "Vector.h"
 
-using namespace std;
+Point::Point() : x(0), y(0), z(0) {}
 
-Point::Point(double x, double y, double z) {
-	this->x = x;
-	this->y = y;
-	this->z = z;
-}
-;
-
-Point::Point() {
-	this->x = 0.;
-	this->y = 0.;
-	this->z = 0.;
-}
-;
+Point::Point(double x, double y, double z) : x(x), y(y), z(z) {}
 
 double Point::getX() const{
 	return (this->x);
@@ -35,9 +23,12 @@ double Point::getZ() const{
 	return (this->z);
 }
 
+Point Point::operator+(const Vector &vec) const {
+    return Point(x + vec.getX(), y + vec.getY(), z + vec.getZ());
+}
 
-ostream& operator<<(ostream& os, const Point& p) {
-	os << "(" << p.x << ", " << p.y << ", " << p.z << ")" << endl;
+std::ostream& operator<<(std::ostream& os, const Point& p) {
+    os << "(" << p.x << ", " << p.y << ", " << p.z << ")" << std::endl;
 	return os;
 }
 

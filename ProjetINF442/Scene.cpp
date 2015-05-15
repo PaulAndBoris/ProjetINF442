@@ -6,14 +6,7 @@
  */
 #include "Scene.h"
 
-using namespace std;
 
-Scene::Scene() {
-	this->spheres = set<Sphere>();
-}
-;
 
-Scene::Scene(set<Sphere> spheres) {
-	this->spheres = spheres;
-}
-;
+Scene::Scene(std::set<Sphere> spheres) : spheres(spheres) {}
+

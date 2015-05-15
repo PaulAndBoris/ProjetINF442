@@ -4,11 +4,12 @@
  *  Created on: 14 mai 2015
  *      Author: Boris
  */
-#include "Ray.h"
-#include "Sphere.h"
-
 #ifndef INTERSECTION_H_
 #define INTERSECTION_H_
+
+class Ray;
+class Sphere;
+class Point;
 
 //Renvoie un boolean indiquant s'il y a intersection entre un rayon et une sphere
 //Obsolète par rapport à intersection

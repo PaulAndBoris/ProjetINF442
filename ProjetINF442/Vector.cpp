@@ -5,30 +5,22 @@
  *      Author: Boris
  */
 #include <cmath>
-#include <iostream>
+
 #include "Vector.h"
+#include "Point.h"
 
-using namespace std;
 
-Vector::Vector(double x, double y, double z) {
-	this->x = x;
-	this->y = y;
-	this->z = z;
+Vector::Vector(double x, double y, double z) : x(x), y(y), z(z) {}
 
-}
-;
 
-Vector::Vector(){
-	this->x = 0;
-	this->y = 0;
-	this->z = 0;
-};
+Vector::Vector() : x(0), y(0), z(0) {}
 
-Vector::Vector(Point a, Point b){
-	this->x = b.getX()-a.getX();
-	this->y = b.getY()-a.getY();
-	this->z = b.getZ()-a.getZ();
-};
+Vector::Vector(Point a, Point b) :
+	x(b.getX()-a.getX()),
+	y(b.getY()-a.getY()),
+    z(b.getZ()-a.getZ())
+{}
+
 
 
 double Vector::getX() const{
@@ -45,6 +37,10 @@ double Vector::getZ() const{
 
 Vector Vector::add(const Vector &vec) const {
 	return Vector(this->x + vec.x, this->y + vec.y, this->z + vec.z);
+}
+
+Vector Vector::substract(const Vector &vec) const {
+    return Vector(this->x - vec.x, this->y - vec.y, this->z - vec.z);
 }
 
 Vector Vector::multiply(const double& scalar) const {
@@ -66,14 +62,30 @@ Vector Vector::cross_product(const Vector&vec) const {
 
 	return Vector(x,y,z);
 }
+
+Vector Vector::normalize() const {
+    double n = norm();
+    return Vector(x/n, y/n, z/n);
+}
+
+
+Vector Vector::reflectedBy(const Vector &normal) const {
+    return normal * 2 * (*this * normal) - (*this);
+}
+
 void Vector::print() {
-	std::cout << "x : " << this->x << " y : " << this->y << "z : " << this->z
+	std::cout << "x : " << this->x << " y : " << this->y << " z : " << this->z
 			<< std::endl;
 }
 
 //Surcharge de l'opérateur +
 Vector Vector::operator+(const Vector &vec) const {
 	return this->add(vec);
+}
+
+//Surcharge de l'opérateur -
+Vector Vector::operator-(const Vector &vec) const {
+    return this->substract(vec);
 }
 
 //Surcharges de l'opérateur *
@@ -89,7 +101,7 @@ Vector Vector::operator^(const Vector& vec) const {
 	return this->cross_product(vec);
 }
 
-ostream& operator<<(ostream& os, const Vector& vec) {
+std::ostream& operator<<(std::ostream& os, const Vector& vec) {
 	os << "(" << vec.x << ", " << vec.y << ", " << vec.z << ")" << std::endl;
 	return os;
 }

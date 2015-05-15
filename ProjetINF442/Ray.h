@@ -4,11 +4,12 @@
  *  Created on: 12 mai 2015
  *      Author: Boris
  */
+#ifndef RAY_H_
+#define RAY_H_
+
 #include "Point.h"
 #include "Vector.h"
 
-#ifndef RAY_H_
-#define RAY_H_
 
 class Ray{
 

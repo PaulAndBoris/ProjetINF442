@@ -4,11 +4,12 @@
  *  Created on: 12 mai 2015
  *      Author: Boris
  */
+#ifndef SCENE_H_
+#define SCENE_H_
+
 #include<set>
 #include "Sphere.h"
 
-#ifndef SCENE_H_
-#define SCENE_H_
 
 class Scene{
 
@@ -18,7 +19,6 @@ private :
 
 public :
 
-	Scene();//Constructeur par défaut
 	Scene(std::set<Sphere> spheres);//Constructeur
 
 };

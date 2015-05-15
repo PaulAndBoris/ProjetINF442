@@ -6,20 +6,32 @@
  */
 #include "Light.h"
 
-Light::Light(Point source){ //Lumiere blanche
-	this->source = source;
-	this->R = 255;
-	this->G = 255;
-	this->B = 255;
-};
+// Lumière blanche
+Light::Light(Point source) :
+
+source(source),
+color(Color::whiteColor()),
+ambientColor(Color::blackColor())
+{}
 
 
-Light::Light(Point source, int R, int G, int B){
-	this->source = source;
-	this->R = R;
-	this->G = G;
-	this->B = B;
-};
+Light::Light(Point source, int R, int G, int B, int ambR, int ambG, int ambB) :
+
+source(source),
+color(R, G, B),
+ambientColor(ambR, ambG, ambB)
+{}
 
 
+Point Light::getSource() const {
+    return source;
+}
+
+Color Light::getColor() const {
+    return color;
+}
+
+Color Light::getAmbientColor() const {
+    return ambientColor;
+}
 

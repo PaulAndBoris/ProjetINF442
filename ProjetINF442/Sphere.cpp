@@ -5,33 +5,46 @@
  *      Author: Boris
  */
 #include <iostream>
+
 #include "Sphere.h"
 
-Sphere::Sphere(Point centre, double radius, int R, int G, int B) {
-	this->centre = centre;
-	this->radius = radius;
-	this->R = R;
-	this->G = G;
-	this->B = B;
-}
-;
 
-Sphere::Sphere() {
-	this->centre = Point();
-	this->radius = 0;
-	this->R = 0;
-	this->G = 0;
-	this->B = 0;
+Sphere::Sphere(Point centre, double radius, int R, int G, int B, double Ks, double Kd, double Ka, double alpha) :
 
-}
-;
+centre(centre),
+radius(radius),
+color(R, G, B),
+Ks(Ks),
+Kd(Kd),
+Ka(Ka),
+alpha(alpha)
+{}
+
+Sphere::Sphere() :
+
+centre(),
+radius(0),
+color(),
+Ks(0),
+Kd(0),
+Ka(0),
+alpha(0)
+{}
 
 Point Sphere::getCentre() const{
-	return this->centre;
+	return centre;
 }
 
 double Sphere::getRadius() const{
-	return this->radius;
+	return radius;
+}
+
+Color Sphere::getColor() const {
+    return color;
+}
+
+Vector Sphere::normalAtPoint(const Point &point) const {
+    return Vector(centre, point).normalize();
 }
 
 bool Sphere::operator<(const Sphere &sphere) const {
@@ -43,17 +56,9 @@ bool Sphere::operator<(const Sphere &sphere) const {
         return true;
     if (radius > sphere.radius)
         return false;
-    if (R < sphere.R)
+    if (color < sphere.color)
         return true;
-    if (R > sphere.R)
-        return false;
-    if (G < sphere.G)
-        return true;
-    if (G > sphere.G)
-        return false;
-    if (B < sphere.B)
-        return true;
-    if (B > sphere.B)
+    if (sphere.color < color)
         return false;
     
     return false;

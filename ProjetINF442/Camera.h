@@ -4,24 +4,26 @@
  *  Created on: 14 mai 2015
  *      Author: Boris
  */
-#include "Vector.h"
-
 #ifndef CAMERA_H_
 #define CAMERA_H_
 
-class Camera{
+#include "Ray.h"
 
+class Camera {
+    
 private :
-	Vector eye;
-	Vector target;
-	Vector up;
+	Point eye, target;
+	Vector up, right;
 	//Dimensions de l'écran
-	double width;
-	double height;
+	double width, height;
+    //Resolution
+    int cols, rows;
 
 public:
 
-	Camera(Vector eye, Vector target, Vector up, double width, double height);//Constructeur
+	Camera(Point eye, Point target, Vector up, double width, double height, int cols, int rows);//Constructeur
+    
+    Ray rayForCoordinates(int x, int y) const;
 
 };
 

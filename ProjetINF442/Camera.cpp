@@ -6,12 +6,30 @@
  */
 #include "Camera.h"
 
-Camera::Camera(Vector eye, Vector target, Vector up, double width,
-		double height) {
-	this->eye = eye;
-	this->target = target;
-	this->up = up;
-	this->width = width;
-	this->height = height;
-}
+Camera::Camera(Point eye, Point target, Vector up, double width, double height, int cols, int rows) :
 
+eye(eye),
+target(target),
+
+up(up.normalize()),
+right((Vector(eye, target)^up).normalize()),
+
+width(width),
+height(height),
+
+cols(cols),
+rows(rows)
+{}
+
+
+Ray Camera::rayForCoordinates(int x, int y) const {
+    
+    x -= cols/2;
+    y -= rows/2;
+    
+    Point screenPoint = target
+                        + up    * (((double)y) / rows) * height
+                        + right * (((double)x) / cols) * width;
+    
+    return Ray(eye, Vector(eye, screenPoint));
+}
