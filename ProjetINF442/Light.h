@@ -18,17 +18,17 @@ private :
 	Point source;
 
 	//Couleurs optionnelles
-    Color color, ambientColor;
+    Color color;
 
 public :
 
-	Light(Point source);//Constructeur sans couleur spécifiée -> lumiere blanche
-	Light(Point source, int R, int G, int B, int ambR = 255, int ambG = 255, int ambB = 255);//Constructeur avec couleur
+	Light(const Point &source);//Constructeur sans couleur spécifiée -> lumiere blanche
+	Light(const Point &source, const Color &color);//Constructeur avec couleur
     
     Point getSource() const;
     Color getColor() const;
-    Color getAmbientColor() const;
 
+    bool operator<(const Light& c) const;
 };
 
 

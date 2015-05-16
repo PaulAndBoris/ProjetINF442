@@ -11,23 +11,25 @@
 #include "Vector.h"
 #include "Color.h"
 
+class Scene;
+class Ray;
 
 class Sphere{
 
-private :
-
+//private :
+public:
 	Point centre;
 	double radius;
 
     Color color;
     
     // shininess
-    double Ks, Kd, Ka, alpha;
+    double Ks[3] = {0}, Kd[3] = {0}, Ka[3] = {0}, alpha;
 
 public :
 
 	Sphere();//Constructeur par défaut, nécessaire pour pouvoir initialiser un set
-	Sphere(Point centre, double radius, int R, int G, int B, double Ks, double Kd, double Ka, double alpha);//Constructeur
+	Sphere(const Point &centre, double radius, const Color &color, double Ks, double Kd, double Ka, double alpha);//Constructeur
     
 	Point getCentre() const;//Accès au centre
 	double getRadius() const;//Accès au rayon
@@ -35,7 +37,14 @@ public :
     
     Vector normalAtPoint(const Point &point) const;
     
+    //Renvoie un boolean indiquant s'il y a intersection entre un rayon et une sphere
+    //Le cas échéant stocke le point d'intersection dans la référence intersection_point
+    bool intersection(const Ray& ray, Point& intersection_point) const;
+    
+    Color phongReflectionColor(const Ray &ray, const Point &P, const Scene &scene) const;
+    
     bool operator<(const Sphere &sphere) const;
+    bool operator!=(const Sphere &sphere) const;
 };
 
 

@@ -6,7 +6,7 @@
  */
 #include "Camera.h"
 
-Camera::Camera(Point eye, Point target, Vector up, double width, double height, int cols, int rows) :
+Camera::Camera(const Point &eye, const Point &target, const Vector &up, double width, double height, int cols, int rows, const Scene &scene) :
 
 eye(eye),
 target(target),
@@ -18,7 +18,9 @@ width(width),
 height(height),
 
 cols(cols),
-rows(rows)
+rows(rows),
+
+scene(scene)
 {}
 
 
@@ -32,4 +34,21 @@ Ray Camera::rayForCoordinates(int x, int y) const {
                         + right * (((double)x) / cols) * width;
     
     return Ray(eye, Vector(eye, screenPoint));
+}
+
+
+Color Camera::colorForRay(const Ray &ray) const {
+    
+    Sphere sphere;
+    Point point;
+    
+    if (scene.firstSphereHitByRay(ray, sphere, point))
+        return sphere.phongReflectionColor(ray, point, scene);
+    else
+        return scene.getBackgroundColor();
+}
+
+Color Camera::colorForCoordinates(int x, int y) const {
+    
+    return colorForRay(rayForCoordinates(x, y));
 }

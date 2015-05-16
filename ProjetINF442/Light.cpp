@@ -7,19 +7,17 @@
 #include "Light.h"
 
 // Lumière blanche
-Light::Light(Point source) :
+Light::Light(const Point &source) :
 
 source(source),
-color(Color::whiteColor()),
-ambientColor(Color::whiteColor())
+color(Color::whiteColor())
 {}
 
 
-Light::Light(Point source, int R, int G, int B, int ambR, int ambG, int ambB) :
+Light::Light(const Point &source, const Color &color) :
 
 source(source),
-color(R, G, B),
-ambientColor(ambR, ambG, ambB)
+color(color)
 {}
 
 
@@ -31,7 +29,15 @@ Color Light::getColor() const {
     return color;
 }
 
-Color Light::getAmbientColor() const {
-    return ambientColor;
+bool Light::operator<(const Light& c) const {
+    if (source < c.source)
+        return true;
+    if (c.source < source)
+        return false;
+    if (color < c.color)
+        return true;
+    if (c.color < color)
+        return false;
+    
+    return false;
 }
-

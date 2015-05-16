@@ -8,6 +8,8 @@
 #define CAMERA_H_
 
 #include "Ray.h"
+#include "Color.h"
+#include "Scene.h"
 
 class Camera {
     
@@ -19,12 +21,16 @@ private :
     //Resolution
     int cols, rows;
 
+    Scene scene;
+    
 public:
 
-	Camera(Point eye, Point target, Vector up, double width, double height, int cols, int rows);//Constructeur
+	Camera(const Point &eye, const Point &target, const Vector &up, double width, double height, int cols, int rows, const Scene &scene);//Constructeur
     
     Ray rayForCoordinates(int x, int y) const;
-
+    Color colorForRay(const Ray &ray) const;
+    Color colorForCoordinates(int x, int y) const;
+    
 };
 
 

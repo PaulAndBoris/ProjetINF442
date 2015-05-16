@@ -21,21 +21,8 @@ Color Color::blackColor() {
 Color::Color(unsigned char R, unsigned char G, unsigned char B) : R(R), G(G), B(B) {}
 
 
-int Color::getR() const {
-    return R;
-}
-
-int Color::getG() const {
-    return G;
-}
-
-int Color::getB() const {
-    return B;
-}
-
-
 std::ostream& operator<<(std::ostream& os, const Color& c) {
-    return os << "Color(" << c.R << ", " << c.G << ", " << c.B << ")" << std::endl;
+    return os << "Color(" << (int)c.R << ", " << (int)c.G << ", " << (int)c.B << ")" << std::endl;
 }
 
 
@@ -52,6 +39,17 @@ bool Color::operator<(const Color &c) const {
         return true;
     if (B > c.B)
         return false;
+    
+    return false;
+}
+
+bool Color::operator!=(const Color &color) const {
+    if (R != color.R)
+        return true;
+    if (G != color.G)
+        return true;
+    if (B != color.B)
+        return true;
     
     return false;
 }

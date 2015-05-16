@@ -21,11 +21,15 @@ public:
     
 	Point();//Constructeur par défaut
 	Point(double x, double y, double z); //Constructeur
+    
+    double distanceTo(const Point &p) const;
+    
     friend std::ostream& operator<<(std::ostream& os, const Point& p);
 
     Point operator+(const Vector &vec) const;
     
     bool operator<(const Point &point) const;
+    bool operator!=(const Point &point) const;
 	//Accesseurs :
 	double getX() const;
 	double getY() const;

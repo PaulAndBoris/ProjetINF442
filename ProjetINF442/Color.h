@@ -12,9 +12,10 @@
 #include <iostream>
 
 class Color {
-    unsigned char R, G, B;
     
 public:
+    
+    unsigned char R, G, B;
     
     static Color whiteColor();
     static Color blackColor();
@@ -22,13 +23,10 @@ public:
     Color();
     Color(unsigned char R, unsigned char G, unsigned char B);
     
-    int getR() const;
-    int getG() const;
-    int getB() const;
-    
     friend std::ostream& operator<<(std::ostream& os, const Color& c);
     
     bool operator<(const Color &c) const;
+    bool operator!=(const Color &color) const;
 };
 
 #endif /* defined(__Projet__Color__) */
