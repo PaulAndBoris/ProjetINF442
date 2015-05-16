@@ -26,10 +26,13 @@ public:
     // shininess
     double Ks[3] = {0}, Kd[3] = {0}, Ka[3] = {0}, alpha;
 
+    //reflection coefficient
+    double r;
+
 public :
 
 	Sphere();//Constructeur par défaut, nécessaire pour pouvoir initialiser un set
-	Sphere(const Point &centre, double radius, const Color &color, double Ks, double Kd, double Ka, double alpha);//Constructeur
+	Sphere(const Point &centre, double radius, const Color &color, double Ks, double Kd, double Ka, double alpha, double r);//Constructeur
     
 	Point getCentre() const;//Accès au centre
 	double getRadius() const;//Accès au rayon

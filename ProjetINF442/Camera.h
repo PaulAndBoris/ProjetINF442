@@ -23,14 +23,16 @@ private :
 
     Scene scene;
     
+    //Nombre maximal de réflections
+    int reflections;
+
 public:
 
-	Camera(const Point &eye, const Point &target, const Vector &up, double width, double height, int cols, int rows, const Scene &scene);//Constructeur
+	Camera(const Point &eye, const Point &target, const Vector &up, double width, double height, int cols, int rows, const Scene &scene, const int reflections);//Constructeur
     
     Ray rayForCoordinates(int x, int y) const;
-    Color colorForRay(const Ray &ray) const;
+    Color colorForRay(const Ray &ray, int count) const;
     Color colorForCoordinates(int x, int y) const;
-    
 };
 
 

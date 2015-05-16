@@ -12,12 +12,13 @@
 #include "Ray.h"
 
 
-Sphere::Sphere(const Point &centre, double radius, const Color &color, double Ks, double Kd, double Ka, double alpha) :
+Sphere::Sphere(const Point &centre, double radius, const Color &color, double Ks, double Kd, double Ka, double alpha, double r) :
 
 centre(centre),
 radius(radius),
 color(color),
-alpha(alpha)
+alpha(alpha),
+r(r)
 {
     // Définition des coefficients en fonction de la couleur de la surface (expérimental)
     this->Ka[0] = (color.R * Ka) / 255.0;
@@ -38,7 +39,8 @@ Sphere::Sphere() :
 centre(),
 radius(0),
 color(),
-alpha(0)
+alpha(0),
+r(0)
 {}
 
 Point Sphere::getCentre() const{
@@ -67,6 +69,8 @@ bool Sphere::intersection(const Ray& ray,
     //	Point centre = sphere.getCentre(); Non utilisé
     Point origine = ray.getPoint();
     
+    double epsilon=0.01;
+
     //Coefficients de l'equation a*t^2+b*t+c=0
     double a = direction * direction;
     double b = fromCentre * direction * 2;
@@ -80,14 +84,15 @@ bool Sphere::intersection(const Ray& ray,
         double t1 = (-b + sqrt(delta)) / (2 * a);
         double t2 = (-b - sqrt(delta)) / (2 * a);
         double t_res;
-        
-        if (t1 >= 0 && (t1 <= t2 || t2 < 0))
+        //On considère qu'il n'y a pas intersection si le rayon part d'un point de la sphère
+        if (t1 > epsilon && (t1 <= t2 || t2 < 0))
             t_res = t1;
-        else if (t2 >= 0)
+        else if (t2 > epsilon)
             t_res = t2;
         else
             return false;
         
+        //std::cout<<t_res<<std::endl;
         Vector vec = direction * t_res;
         intersection_point = Point(vec.getX() + origine.getX(),
                                    vec.getY() + origine.getY(), vec.getZ() + origine.getZ());
@@ -98,7 +103,7 @@ bool Sphere::intersection(const Ray& ray,
 }
 
 /**
- *  Modème de réflection Phong pour la sphère.
+ *  Modèle de réflection Phong pour la sphère.
  */
 Color Sphere::phongReflectionColor(const Ray &ray, const Point &P, const Scene &scene) const {
     

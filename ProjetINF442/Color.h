@@ -27,6 +27,9 @@ public:
     
     bool operator<(const Color &c) const;
     bool operator!=(const Color &color) const;
+
+    Color operator+(const Color &color);
+    Color operator*(const double r);
 };
 
 #endif /* defined(__Projet__Color__) */

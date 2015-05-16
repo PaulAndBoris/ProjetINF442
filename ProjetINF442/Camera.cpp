@@ -6,49 +6,55 @@
  */
 #include "Camera.h"
 
-Camera::Camera(const Point &eye, const Point &target, const Vector &up, double width, double height, int cols, int rows, const Scene &scene) :
+Camera::Camera(const Point &eye, const Point &target, const Vector &up,
+		double width, double height, int cols, int rows, const Scene &scene,
+		const int reflections) :
 
-eye(eye),
-target(target),
+		eye(eye), target(target),
 
-up(up.normalize()),
-right((Vector(eye, target)^up).normalize()),
+		up(up.normalize()), right((Vector(eye, target) ^ up).normalize()),
 
-width(width),
-height(height),
+		width(width), height(height),
 
-cols(cols),
-rows(rows),
+		cols(cols), rows(rows),
 
-scene(scene)
-{}
+		reflections(reflections),
 
+		scene(scene) {
+}
 
 Ray Camera::rayForCoordinates(int x, int y) const {
-    
-    x -= cols/2;
-    y -= rows/2;
-    
-    Point screenPoint = target
-                        + up    * (((double)y) / rows) * height
-                        + right * (((double)x) / cols) * width;
-    
-    return Ray(eye, Vector(eye, screenPoint));
+
+	x -= cols / 2;
+	y -= rows / 2;
+
+	Point screenPoint = target + up * (((double) y) / rows) * height
+			+ right * (((double) x) / cols) * width;
+
+	return Ray(eye, Vector(eye, screenPoint));
 }
 
+Color Camera::colorForRay(const Ray &ray, int count) const {
 
-Color Camera::colorForRay(const Ray &ray) const {
-    
-    Sphere sphere;
-    Point point;
-    
-    if (scene.firstSphereHitByRay(ray, sphere, point))
-        return sphere.phongReflectionColor(ray, point, scene);
-    else
-        return scene.getBackgroundColor();
+	Sphere sphere, rec_sphere;
+	Point point, rec_point;
+
+	if (scene.firstSphereHitByRay(ray, sphere, point)) {
+		Ray rec_ray = Ray(point,
+				ray.getDirection().reflectedBy(sphere.normalAtPoint(point))
+						* (-1));
+		if (count > 0 && scene.firstSphereHitByRay(rec_ray, rec_sphere, rec_point))
+			return sphere.phongReflectionColor(ray, point, scene)
+					* (1 - sphere.r)
+					+ colorForRay(rec_ray, count - 1) * sphere.r;
+		else
+			return sphere.phongReflectionColor(ray, point, scene);
+	} else
+		return scene.getBackgroundColor();
 }
 
+//C'est probablement ici qu'il faut changer qqchose... créer récursivement le rayon réfléchi !
 Color Camera::colorForCoordinates(int x, int y) const {
-    
-    return colorForRay(rayForCoordinates(x, y));
+
+	return colorForRay(rayForCoordinates(x, y), reflections);
 }

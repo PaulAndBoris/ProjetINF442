@@ -53,3 +53,11 @@ bool Color::operator!=(const Color &color) const {
     
     return false;
 }
+
+Color Color::operator*(const double r) {
+	return Color(this->R*r,this->G*r, this->B*r);
+}
+
+Color Color::operator+(const Color &color){
+	return Color(this->R+color.R,this->G+color.G, this->B+color.B);
+}
