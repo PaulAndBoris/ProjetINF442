@@ -38,17 +38,20 @@ Color Camera::colorForRay(const Ray &ray, int count) const {
 
 	Sphere sphere, rec_sphere;
 	Point point, rec_point;
+	bool hitByRay;
 
 	if (scene.firstSphereHitByRay(ray, sphere, point)) {
 		Ray rec_ray = Ray(point,
 				ray.getDirection().reflectedBy(sphere.normalAtPoint(point))
 						* (-1));
-		if (count > 0 && scene.firstSphereHitByRay(rec_ray, rec_sphere, rec_point))
-			return sphere.phongReflectionColor(ray, point, scene)
-					* (1 - sphere.r)
+		Color color = sphere.phongReflectionColor(ray, point, scene, hitByRay);
+		if (count > 0
+				&& scene.firstSphereHitByRay(rec_ray, rec_sphere, rec_point)
+				&& hitByRay)
+			return color * (1 - sphere.r)
 					+ colorForRay(rec_ray, count - 1) * sphere.r;
 		else
-			return sphere.phongReflectionColor(ray, point, scene);
+			return color;
 	} else
 		return scene.getBackgroundColor();
 }

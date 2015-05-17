@@ -44,7 +44,7 @@ public :
     //Le cas échéant stocke le point d'intersection dans la référence intersection_point
     bool intersection(const Ray& ray, Point& intersection_point) const;
     
-    Color phongReflectionColor(const Ray &ray, const Point &P, const Scene &scene) const;
+    Color phongReflectionColor(const Ray &ray, const Point &P, const Scene &scene, bool& hitByRay) const;
     
     bool operator<(const Sphere &sphere) const;
     bool operator!=(const Sphere &sphere) const;

@@ -11,7 +11,7 @@ int main() {
 
 	int cols = 960, rows = 720;
 	Color pixelColor;
-	double Ks = 0.3, Kd = 0.7, Ka = 0.4, alpha = 20, r = 0.2;
+	double Ks = 0.3, Kd = 0.7, Ka = 0.4, alpha = 30, r = 0.2;
 
 	int reflections = 5;
 
