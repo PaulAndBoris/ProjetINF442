@@ -9,29 +9,27 @@
 #include "Vector.h"
 #include "Point.h"
 
+Vector::Vector(double x, double y, double z) :
+		x(x), y(y), z(z) {
+}
 
-Vector::Vector(double x, double y, double z) : x(x), y(y), z(z) {}
-
-
-Vector::Vector() : x(0), y(0), z(0) {}
+Vector::Vector() :
+		x(0), y(0), z(0) {
+}
 
 Vector::Vector(Point a, Point b) :
-	x(b.getX()-a.getX()),
-	y(b.getY()-a.getY()),
-    z(b.getZ()-a.getZ())
-{}
+		x(b.getX() - a.getX()), y(b.getY() - a.getY()), z(b.getZ() - a.getZ()) {
+}
 
-
-
-double Vector::getX() const{
+double Vector::getX() const {
 	return (this->x);
 }
 
-double Vector::getY() const{
+double Vector::getY() const {
 	return (this->y);
 }
 
-double Vector::getZ() const{
+double Vector::getZ() const {
 	return (this->z);
 }
 
@@ -40,7 +38,7 @@ Vector Vector::add(const Vector &vec) const {
 }
 
 Vector Vector::substract(const Vector &vec) const {
-    return Vector(this->x - vec.x, this->y - vec.y, this->z - vec.z);
+	return Vector(this->x - vec.x, this->y - vec.y, this->z - vec.z);
 }
 
 Vector Vector::multiply(const double& scalar) const {
@@ -56,21 +54,20 @@ double Vector::norm() const {
 }
 
 Vector Vector::cross_product(const Vector&vec) const {
-	double x = this->y*vec.z - this->z*vec.y;
-	double y = this->z*vec.x - this->x*vec.z;
-	double z = this->x*vec.y - this->y*vec.x;
+	double x = this->y * vec.z - this->z * vec.y;
+	double y = this->z * vec.x - this->x * vec.z;
+	double z = this->x * vec.y - this->y * vec.x;
 
-	return Vector(x,y,z);
+	return Vector(x, y, z);
 }
 
 Vector Vector::normalize() const {
-    double n = norm();
-    return Vector(x/n, y/n, z/n);
+	double n = norm();
+	return Vector(x / n, y / n, z / n);
 }
 
-
 Vector Vector::reflectedBy(const Vector &normal) const {
-    return normal * 2 * (*this * normal) - (*this);
+	return normal * 2 * (*this * normal) - (*this);
 }
 
 void Vector::print() {
@@ -85,7 +82,7 @@ Vector Vector::operator+(const Vector &vec) const {
 
 //Surcharge de l'opérateur -
 Vector Vector::operator-(const Vector &vec) const {
-    return this->substract(vec);
+	return this->substract(vec);
 }
 
 //Surcharges de l'opérateur *
@@ -99,6 +96,12 @@ Vector Vector::operator*(const double &scalar) const {
 
 Vector Vector::operator^(const Vector& vec) const {
 	return this->cross_product(vec);
+}
+
+bool Vector::operator!=(const Vector &vector) const {
+
+	return ((this->x - vector.x) * (this->y - vector.y) * (this->z - vector.z)
+			!= 0);
 }
 
 std::ostream& operator<<(std::ostream& os, const Vector& vec) {

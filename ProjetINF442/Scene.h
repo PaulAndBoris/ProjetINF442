@@ -8,16 +8,17 @@
 #define SCENE_H_
 
 #include <set>
+#include <vector>
 #include "Sphere.h"
 #include "Light.h"
-
+#include "Scene.h"
 
 class Scene{
 
 private :
 
     std::set<Light> lights;
-	std::set<Sphere> spheres;
+	std::vector<Object*> objects;
     
     Color ambientColor, backgroundColor;
     
@@ -26,9 +27,9 @@ private :
 public :
 
     Scene(const Color &backgroundColor);
-    Scene(std::set<Sphere> spheres, std::set<Light> lights, const Color &backgroundColor);//Constructeur
+    Scene(std::vector<Object*> objects, std::set<Light> lights, const Color &backgroundColor);//Constructeur
 
-    void addSphere(Sphere sphere);
+    void addObject(Object* object);
     void addLight(Light light);
     
     std::set<Light>::iterator lightsBegin() const;
@@ -37,7 +38,7 @@ public :
     Color getAmbiantColor() const;
     Color getBackgroundColor() const;
     
-    bool firstSphereHitByRay(const Ray &ray, Sphere &sphere, Point &point) const;
+    bool firstObjectHitByRay(const Ray &ray, Object &object, Point &point) const;
 };
 
 

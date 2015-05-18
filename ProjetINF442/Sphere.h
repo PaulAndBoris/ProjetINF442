@@ -10,11 +10,14 @@
 #include "Point.h"
 #include "Vector.h"
 #include "Color.h"
+#include "Object.h"
 
 class Scene;
 class Ray;
 
-class Sphere{
+class Sphere : public Object {
+
+
 
 //private :
 public:

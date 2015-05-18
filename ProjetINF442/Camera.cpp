@@ -5,6 +5,7 @@
  *      Author: Boris
  */
 #include "Camera.h"
+#include "Object.h"
 
 Camera::Camera(const Point &eye, const Point &target, const Vector &up,
 		double width, double height, int cols, int rows, const Scene &scene,
@@ -36,24 +37,25 @@ Ray Camera::rayForCoordinates(int x, int y) const {
 
 Color Camera::colorForRay(const Ray &ray, int count) const {
 
-	Sphere sphere, rec_sphere;
+	Object* object;
+	Object * rec_object;
 	Point point, rec_point;
 
-	if (scene.firstSphereHitByRay(ray, sphere, point)) {
+	if (scene.firstObjectHitByRay(ray, *object, point)) {
 		Ray rec_ray = Ray(point,
-				ray.getDirection().reflectedBy(sphere.normalAtPoint(point))
+				ray.getDirection().reflectedBy(object->normalAtPoint(point))
 						* (-1));
-		if (count > 0 && scene.firstSphereHitByRay(rec_ray, rec_sphere, rec_point))
-			return sphere.phongReflectionColor(ray, point, scene)
-					* (1 - sphere.r)
-					+ colorForRay(rec_ray, count - 1) * sphere.r;
+		if (count > 0
+				&& scene.firstObjectHitByRay(rec_ray, *rec_object, rec_point))
+			return object->phongReflectionColor(ray, point, scene)
+					* (1 - object->r)
+					+ colorForRay(rec_ray, count - 1) * object->r;
 		else
-			return sphere.phongReflectionColor(ray, point, scene);
+			return object->phongReflectionColor(ray, point, scene);
 	} else
 		return scene.getBackgroundColor();
 }
 
-//C'est probablement ici qu'il faut changer qqchose... créer récursivement le rayon réfléchi !
 Color Camera::colorForCoordinates(int x, int y) const {
 
 	return colorForRay(rayForCoordinates(x, y), reflections);

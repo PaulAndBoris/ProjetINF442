@@ -10,6 +10,7 @@
 #include "Sphere.h"
 #include "Scene.h"
 #include "Ray.h"
+#include "Object.h"
 
 
 Sphere::Sphere(const Point &centre, double radius, const Color &color, double Ks, double Kd, double Ka, double alpha, double r) :
@@ -66,7 +67,6 @@ bool Sphere::intersection(const Ray& ray,
     
     Vector direction = ray.getDirection();
     Vector fromCentre = Vector(centre, ray.getPoint());
-    //	Point centre = sphere.getCentre(); Non utilisé
     Point origine = ray.getPoint();
     
     double epsilon=0.01;
@@ -92,7 +92,6 @@ bool Sphere::intersection(const Ray& ray,
         else
             return false;
         
-        //std::cout<<t_res<<std::endl;
         Vector vec = direction * t_res;
         intersection_point = Point(vec.getX() + origine.getX(),
                                    vec.getY() + origine.getY(), vec.getZ() + origine.getZ());
@@ -107,7 +106,7 @@ bool Sphere::intersection(const Ray& ray,
  */
 Color Sphere::phongReflectionColor(const Ray &ray, const Point &P, const Scene &scene) const {
     
-    Sphere tempSphere;
+    Object* tempObject;
     Point tempPoint;
     double L_N, R_V_alpha;
     
@@ -127,8 +126,8 @@ Color Sphere::phongReflectionColor(const Ray &ray, const Point &P, const Scene &
         
         L = Vector(P, l->getSource()).normalize();
         if (L * N < 0) continue;
-        scene.firstSphereHitByRay(Ray(l->getSource(), L * (-1)), tempSphere, tempPoint);
-        if (tempSphere != *this) continue;
+        scene.firstObjectHitByRay(Ray(l->getSource(), L * (-1)), *tempObject, tempPoint);
+        if (tempObject != this) continue;
         
         lightColor = l->getColor();
         R = L.reflectedBy(N);
@@ -145,6 +144,7 @@ Color Sphere::phongReflectionColor(const Ray &ray, const Point &P, const Scene &
                  (green > 255) ? 255 : green,
                  (blue  > 255) ? 255 : blue);
 }
+
 
 
 bool Sphere::operator<(const Sphere &sphere) const {

@@ -28,9 +28,9 @@ int main() {
 	Scene scene(Color::blackColor());
 	scene.addLight(light);
 	scene.addLight(light2);
-	scene.addSphere(sphere);
-	scene.addSphere(sphere2);
-	scene.addSphere(sphere3);
+	scene.addObject(&sphere);
+	scene.addObject(&sphere2);
+	scene.addObject(&sphere3);
 
 	Point barycentre = sphereCenter2; // + Vector(sphereCenter2, sphereCenter) * 0.3;
 	Point target = eye + Vector(eye, barycentre).normalize() * 2;
