@@ -8,8 +8,8 @@
 #ifndef LIGHT_H_
 #define LIGHT_H_
 
-#include "Point.h"
 #include "Color.h"
+#include "Ray.h"
 
 class Light{
 
@@ -28,7 +28,7 @@ public :
     Point getSource() const;
     Color getColor() const;
 
-    bool operator<(const Light& c) const;
+//    bool operator<(const Light& c) const;
 };
 
 

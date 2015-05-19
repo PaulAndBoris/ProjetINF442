@@ -1,0 +1,1 @@
+mpic++ -L/opt/X11/lib/ -lX11 -I/usr/local/include/ -I/opt/X11/include/ Camera.cpp Light.cpp Ray.cpp Object.cpp Sphere.cpp Plan.cpp Vector.cpp Color.cpp Point.cpp Scene.cpp Test.cpp -o projet.app

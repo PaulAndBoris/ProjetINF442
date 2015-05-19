@@ -25,8 +25,8 @@ public:
     
     friend std::ostream& operator<<(std::ostream& os, const Color& c);
     
-    bool operator<(const Color &c) const;
-    bool operator!=(const Color &color) const;
+//    bool operator<(const Color &c) const;
+//    bool operator!=(const Color &color) const;
 
     Color operator+(const Color &color);
     Color operator*(const double r);

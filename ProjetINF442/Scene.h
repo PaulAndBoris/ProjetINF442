@@ -7,17 +7,19 @@
 #ifndef SCENE_H_
 #define SCENE_H_
 
-#include <set>
+//#include <set>
 #include <vector>
-#include "Sphere.h"
+
 #include "Light.h"
-#include "Scene.h"
+#include "Color.h"
+
+class Object;
 
 class Scene{
 
 private :
 
-    std::set<Light> lights;
+    std::vector<Light*> lights;
 	std::vector<Object*> objects;
     
     Color ambientColor, backgroundColor;
@@ -27,18 +29,21 @@ private :
 public :
 
     Scene(const Color &backgroundColor);
-    Scene(std::vector<Object*> objects, std::set<Light> lights, const Color &backgroundColor);//Constructeur
+    Scene(std::vector<Object*> objects, std::vector<Light*> lights, const Color &backgroundColor);//Constructeur
 
     void addObject(Object* object);
-    void addLight(Light light);
+    void addLight(Light* light);
     
-    std::set<Light>::iterator lightsBegin() const;
-    std::set<Light>::iterator lightsEnd() const;
+    std::vector<Light*>::const_iterator lightsBegin() const;
+    std::vector<Light*>::const_iterator lightsEnd() const;
+    
+    std::vector<Object*>::const_iterator objectsBegin() const;
+    std::vector<Object*>::const_iterator objectsEnd() const;
     
     Color getAmbiantColor() const;
     Color getBackgroundColor() const;
     
-    bool firstObjectHitByRay(const Ray &ray, Object &object, Point &point) const;
+    bool firstObjectHitByRay(const Ray &ray, Object* &object, Point &point) const;
 };
 
 

@@ -4,9 +4,11 @@
  *  Created on: 12 mai 2015
  *      Author: Boris
  */
+#include <cmath>
+
 #include "Point.h"
 #include "Vector.h"
-#include <cmath>
+
 
 Point::Point() : x(0), y(0), z(0) {}
 
@@ -41,31 +43,31 @@ std::ostream& operator<<(std::ostream& os, const Point& p) {
 	return os;
 }
 
-bool Point::operator<(const Point &point) const {
-    if (x < point.x)
-        return true;
-    if (x > point.x)
-        return false;
-    if (y < point.y)
-        return true;
-    if (y > point.y)
-        return false;
-    if (z < point.z)
-        return true;
-    if (z > point.z)
-        return false;
-    
-    return false;
-}
-
-
-bool Point::operator!=(const Point &point) const {
-    if (x != point.x)
-        return true;
-    if (y != point.y)
-        return true;
-    if (z != point.z)
-        return true;
-    
-    return false;
-}
+//bool Point::operator<(const Point &point) const {
+//    if (x < point.x)
+//        return true;
+//    if (x > point.x)
+//        return false;
+//    if (y < point.y)
+//        return true;
+//    if (y > point.y)
+//        return false;
+//    if (z < point.z)
+//        return true;
+//    if (z > point.z)
+//        return false;
+//    
+//    return false;
+//}
+//
+//
+//bool Point::operator!=(const Point &point) const {
+//    if (x != point.x)
+//        return true;
+//    if (y != point.y)
+//        return true;
+//    if (z != point.z)
+//        return true;
+//    
+//    return false;
+//}

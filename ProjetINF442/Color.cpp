@@ -26,33 +26,33 @@ std::ostream& operator<<(std::ostream& os, const Color& c) {
 }
 
 
-bool Color::operator<(const Color &c) const {
-    if (R < c.R)
-        return true;
-    if (R > c.R)
-        return false;
-    if (G < c.G)
-        return true;
-    if (G > c.G)
-        return false;
-    if (B < c.B)
-        return true;
-    if (B > c.B)
-        return false;
-    
-    return false;
-}
-
-bool Color::operator!=(const Color &color) const {
-    if (R != color.R)
-        return true;
-    if (G != color.G)
-        return true;
-    if (B != color.B)
-        return true;
-    
-    return false;
-}
+//bool Color::operator<(const Color &c) const {
+//    if (R < c.R)
+//        return true;
+//    if (R > c.R)
+//        return false;
+//    if (G < c.G)
+//        return true;
+//    if (G > c.G)
+//        return false;
+//    if (B < c.B)
+//        return true;
+//    if (B > c.B)
+//        return false;
+//    
+//    return false;
+//}
+//
+//bool Color::operator!=(const Color &color) const {
+//    if (R != color.R)
+//        return true;
+//    if (G != color.G)
+//        return true;
+//    if (B != color.B)
+//        return true;
+//    
+//    return false;
+//}
 
 Color Color::operator*(const double r) {
 	return Color(this->R*r,this->G*r, this->B*r);
