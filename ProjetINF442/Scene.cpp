@@ -78,7 +78,7 @@ bool Scene::firstObjectHitByRay(const Ray &ray, Object* &object,
 	bool hitOne = false;
     
 	Point P, origin(ray.getPoint()), firstPoint;
-    Object* firstObject;// = nullptr;
+    Object* firstObject = NULL;
 	double dist, minDist = INFINITY;
     
     std::vector<Object*>::const_iterator o;

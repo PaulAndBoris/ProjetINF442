@@ -14,7 +14,7 @@ using namespace std;
 int main(int argc, char * argv[]) {
     
     int myrank, size;
-        
+    
     // Initialize MPI.
     MPI_Init(&argc, &argv);
     
@@ -24,13 +24,15 @@ int main(int argc, char * argv[]) {
     // Get the individual process ID.
     MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
     
-    if (argc != 2) {
+    if (argc < 2) {
         if (myrank == 0)
-            cout << "Usage: mpirun projet.app [input file]" << endl;
+            cout << "Usage: mpirun projet.app [input file] [outputfile.bmp]" << endl;
         
         MPI_Finalize();
         return 0;
     }
+    
+    double startTime = clock();
     
     // ====================
     //  PARSING INPUT FILE
@@ -41,7 +43,7 @@ int main(int argc, char * argv[]) {
     //    Point point;
     int count, rows, cols, reflections, R, G, B;
     float x, y, z, dx, dy, dz, radius, width, height, Ks, Kd, Ka, alpha, r;
-//    unsigned char R, G, B;
+
     
     // SCENE // Format : backgroundColor
     
@@ -152,6 +154,9 @@ int main(int argc, char * argv[]) {
             
         }
         
+        // Affichage du temps d'exécution
+        cout << "Temps = " << (clock()-startTime)/float(CLOCKS_PER_SEC) << " secondes" << endl;
+        
 //        Local Only
 //        
 //        CImgDisplay disp(image, "resultat");
@@ -159,7 +164,7 @@ int main(int argc, char * argv[]) {
 //        while (!disp.is_closed())
 //            disp.wait();
         
-        image.save("result.bmp");
+        image.save((argc > 2) ? argv[2] : "result.bmp");
         
     }
     

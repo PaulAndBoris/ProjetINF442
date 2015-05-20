@@ -41,15 +41,15 @@ Ray Camera::rayForCoordinates(int x, int y) const {
 Color Camera::colorForRay(const Ray &ray, int count) const {
 
 	Object* object;
-	Object* rec_object;
+//	Object* rec_object;
 	Point point, rec_point;
 
 	if (scene->firstObjectHitByRay(ray, object, point)) {
 		Ray rec_ray = Ray(point,
 				ray.getDirection().reflectedBy(object->normalAtPoint(point))
 						* (-1));
-		if (count > 0
-				&& scene->firstObjectHitByRay(rec_ray, rec_object, rec_point))
+		if (count > 0)
+//				&& scene->firstObjectHitByRay(rec_ray, rec_object, rec_point))
 			return object->phongReflectionColor(ray, point, scene)
 					* (1 - object->getR())
 					+ colorForRay(rec_ray, count - 1) * object->getR();
