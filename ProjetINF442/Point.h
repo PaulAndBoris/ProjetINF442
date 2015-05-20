@@ -28,8 +28,6 @@ public:
 
     Point operator+(const Vector &vec) const;
     
-//    bool operator<(const Point &point) const;
-//    bool operator!=(const Point &point) const;
 	//Accesseurs :
 	double getX() const;
 	double getY() const;

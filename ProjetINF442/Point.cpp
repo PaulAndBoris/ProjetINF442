@@ -42,32 +42,3 @@ std::ostream& operator<<(std::ostream& os, const Point& p) {
     os << "(" << p.x << ", " << p.y << ", " << p.z << ")" << std::endl;
 	return os;
 }
-
-//bool Point::operator<(const Point &point) const {
-//    if (x < point.x)
-//        return true;
-//    if (x > point.x)
-//        return false;
-//    if (y < point.y)
-//        return true;
-//    if (y > point.y)
-//        return false;
-//    if (z < point.z)
-//        return true;
-//    if (z > point.z)
-//        return false;
-//    
-//    return false;
-//}
-//
-//
-//bool Point::operator!=(const Point &point) const {
-//    if (x != point.x)
-//        return true;
-//    if (y != point.y)
-//        return true;
-//    if (z != point.z)
-//        return true;
-//    
-//    return false;
-//}

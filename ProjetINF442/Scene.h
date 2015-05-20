@@ -7,7 +7,6 @@
 #ifndef SCENE_H_
 #define SCENE_H_
 
-//#include <set>
 #include <vector>
 
 #include "Light.h"

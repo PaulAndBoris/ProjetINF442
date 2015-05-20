@@ -29,15 +29,3 @@ Color Light::getColor() const {
     return color;
 }
 
-//bool Light::operator<(const Light& c) const {
-//    if (source < c.source)
-//        return true;
-//    if (c.source < source)
-//        return false;
-//    if (color < c.color)
-//        return true;
-//    if (c.color < color)
-//        return false;
-//    
-//    return false;
-//}

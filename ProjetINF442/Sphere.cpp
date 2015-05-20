@@ -27,10 +27,6 @@ double Sphere::getRadius() const{
 	return radius;
 }
 
-//Color Sphere::getColor() const {
-//    return color;
-//}
-
 Vector Sphere::normalAtPoint(const Point &point) const {
     return Vector(centre, point).normalize();
 }
@@ -75,88 +71,3 @@ bool Sphere::intersection(const Ray& ray,
     
     return result;
 }
-
-/**
- *  Modèle de réflection Phong pour la sphère.
- */
-//Color Sphere::phongReflectionColor(const Ray &ray, const Point &P, const Scene &scene) const {
-//    
-//    Object* tempObject;
-//    Point tempPoint;
-//    double L_N, R_V_alpha;
-//    
-//    Vector N = normalAtPoint(P), L, R;
-//    Vector V = Vector(P, ray.getPoint()).normalize();
-//    
-//    Color ambiant = scene.getAmbiantColor(), lightColor;
-//    
-//    double red = Ka[0] * ambiant.R,
-//    green = Ka[1] * ambiant.G,
-//    blue = Ka[2] * ambiant.B;
-////    std::cout << "Ka = " << Ka[0] << " Kd = " << Kd[0] << " Ks = " << Ks[0] << std::endl;
-//
-//    std::set<Light>::iterator l;
-//    
-//    for (l = scene.lightsBegin(); l != scene.lightsEnd(); ++l) {
-//        
-//        L = Vector(P, l->getSource()).normalize();
-//        if (L * N < 0) continue;
-//        scene.firstObjectHitByRay(Ray(l->getSource(), L * (-1)), tempObject, tempPoint);
-//        if (tempObject != this) continue;
-//        
-//        lightColor = l->getColor();
-//        R = L.reflectedBy(N);
-//        
-//        L_N = L * N;
-//        R_V_alpha = pow(R * V, alpha);
-//        
-//        red += lightColor.R * (Kd[0] * L_N + Ks[0] * R_V_alpha);
-//        green += lightColor.G * (Kd[1] * L_N + Ks[1] * R_V_alpha);
-//        blue += lightColor.B * (Kd[2] * L_N + Ks[2] * R_V_alpha);
-//    }
-//    
-//    return Color((red   > 255) ? 255 : red,
-//                 (green > 255) ? 255 : green,
-//                 (blue  > 255) ? 255 : blue);
-//}
-
-
-
-//bool Sphere::operator<(const Sphere &sphere) const {
-//    if (centre < sphere.centre)
-//        return true;
-//    if (sphere.centre < centre)
-//        return false;
-//    if (radius < sphere.radius)
-//        return true;
-//    if (radius > sphere.radius)
-//        return false;
-//    if (color < sphere.color)
-//        return true;
-//    if (sphere.color < color)
-//        return false;
-//    
-//    return false;
-//}
-//
-//
-//bool Sphere::operator!=(const Sphere &sphere) const {
-//    if (centre != sphere.centre)
-//        return true;
-//    if (radius != sphere.radius)
-//        return true;
-//    if (color != sphere.color)
-//        return true;
-//    
-//    for (int i = 0; i < 3; i++) {
-//        if (Ks[i] != sphere.Ks[i]) return true;
-//        if (Kd[i] != sphere.Kd[i]) return true;
-//        if (Ka[i] != sphere.Ka[i]) return true;
-//    }
-//    
-//    if (alpha != sphere.alpha)
-//        return true;
-//    
-//    return false;
-//}
-

@@ -13,25 +13,16 @@
 class Plan : public Object {
 
 private :
-//public:
-	Point point;
+
+    Point point;
 	Vector normale;
 
-//    Color color;
-
-//    // shininess
-//    double Ks[3] = {0}, Kd[3] = {0}, Ka[3] = {0}, alpha;
-//
-//    //reflection coefficient
-//    double r;
 
 public :
 
-//	Plan();//Constructeur par défaut, nécessaire pour pouvoir initialiser un set
 	Plan(const Point &point, Vector normal, const Color &color, double Ks, double Kd, double Ka, double alpha, double r);//Constructeur
 
 	Point getPoint() const;//Accès au centre
-//    Color getColor() const;
 
     Vector normalAtPoint(const Point &point) const;
 
@@ -39,10 +30,6 @@ public :
     //Le cas échéant stocke le point d'intersection dans la référence intersection_point
     bool intersection(const Ray& ray, Point& intersection_point) const;
 
-//    Color phongReflectionColor(const Ray &ray, const Point &P, const Scene &scene) const;
-
-//    bool operator<(const Plan &plan) const;
-//    bool operator!=(const Plan &plan) const;
 };
 
 

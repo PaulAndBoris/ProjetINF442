@@ -44,7 +44,6 @@ public:
 	double operator*(const Vector &vec) const;
 	Vector operator*(const double &scalar) const; //NB : on doit écrire vecteur*scalaire et pas l'inverse
 	Vector operator^(const Vector &vec) const; //Operateur produit vectoriel
-//	bool operator!=(const Vector &vector) const;
 
 	friend std::ostream& operator<<(std::ostream& os, const Vector& vec);
 };

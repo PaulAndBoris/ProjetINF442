@@ -98,12 +98,6 @@ Vector Vector::operator^(const Vector& vec) const {
 	return this->cross_product(vec);
 }
 
-//bool Vector::operator!=(const Vector &vector) const {
-//
-//	return ((this->x - vector.x) * (this->y - vector.y) * (this->z - vector.z)
-//			!= 0);
-//}
-
 std::ostream& operator<<(std::ostream& os, const Vector& vec) {
 	os << "(" << vec.x << ", " << vec.y << ", " << vec.z << ")" << std::endl;
 	return os;

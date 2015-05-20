@@ -9,9 +9,7 @@
 
 #include "Object.h"
 
-//Object::~Object(){
-//
-//}
+
 Object::Object() {
     
     this->alpha = 0;
@@ -69,7 +67,6 @@ Color Object::phongReflectionColor(const Ray &ray, const Point &P, Scene* scene)
     green = Ka[1] * ambiant.G,
     blue  = Ka[2] * ambiant.B;
 
-//	std::set<Light*>::iterator l;
     std::vector<Light*>::const_iterator l;
 
 	for (l = scene->lightsBegin(); l != scene->lightsEnd(); ++l) {
@@ -93,29 +90,8 @@ Color Object::phongReflectionColor(const Ray &ray, const Point &P, Scene* scene)
 		blue  += lightColor.B * (Kd[2] * L_N + Ks[2] * R_V_alpha);
 	}
 
-	return Color((red > 255) ? 255 : red, (green > 255) ? 255 : green,
-			(blue > 255) ? 255 : blue);
+	return Color((unsigned char)((red > 255) ? 255 : red),
+                 (unsigned char)((green > 255) ? 255 : green),
+		         (unsigned char)((blue > 255) ? 255 : blue));
 }
 
-//bool Object::operator!=(const Object &object) const {
-//
-//	//const Sphere* x = dynamic_cast<const Sphere*>(this);
-//	//const Sphere *y = dynamic_cast<const Sphere*>(&object);
-//
-//	//if (x != NULL && y != NULL)
-//	if (typeid(this) == typeid(Sphere)&&typeid(object) == typeid(Sphere))
-//		return (*this) != object;
-//
-//	else {
-//		//const Plan* x = dynamic_cast<const Sphere*>(this);
-//		//const Plan *y = dynamic_cast<const Sphere*>(&object);
-//
-//		if (typeid(this) == typeid(Plan)&&typeid(object) == typeid(Plan))
-//			return (*this) != object;
-//
-//		//if (x != NULL && y != NULL)
-//			//return &x != &y;
-//	}
-//
-//	return true;
-//}

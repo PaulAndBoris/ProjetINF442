@@ -16,10 +16,7 @@
 class Object {
 
 private:
-//	virtual ~Object();
     
-//    Color color;
-
     // shininess
     double Ks[3], Kd[3], Ka[3], alpha;
     
@@ -41,7 +38,6 @@ public:
 	virtual Vector normalAtPoint(const Point &point) const = 0;
 	virtual bool intersection(const Ray& ray, Point& intersection_point) const = 0;
 
-//    bool operator!=(const Object &object) const;
 };
 
 #endif /* OBJECT_H_ */

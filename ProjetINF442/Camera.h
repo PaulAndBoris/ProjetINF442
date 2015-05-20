@@ -16,6 +16,7 @@ class Camera {
 private :
 	Point eye, target;
 	Vector up, right;
+    
 	//Dimensions de l'écran
 	double width, height;
     //Resolution

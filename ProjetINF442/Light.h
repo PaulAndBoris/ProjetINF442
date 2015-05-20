@@ -17,7 +17,6 @@ private :
 
 	Point source;
 
-	//Couleurs optionnelles
     Color color;
 
 public :
@@ -28,7 +27,6 @@ public :
     Point getSource() const;
     Color getColor() const;
 
-//    bool operator<(const Light& c) const;
 };
 
 
